@@ -14,6 +14,14 @@ from instagrapi import Client
 
 import json
 
+import datetime
+
+
+
+"""
+"""
+
+
 
 
 """
@@ -23,6 +31,9 @@ def test_ensta():
 
 
 
+# cl.direct_send('How are you?', user_ids=[cl.user_id])  # send youself
+# cl.direct_media_share(media.pk, user_ids=[cl.user_id])
+
 """
 """
 def test_instagrapi():
@@ -31,17 +42,46 @@ def test_instagrapi():
     cl.login("", "")
     #print("Account Information:",cl.account_info().dict())
     #print(cl.collections())
-    user_id = cl.user_id_from_username("austinnasso")
-    medias = cl.user_medias(user_id, 20)
-    print(medias)
-    print("Saving to JSON")
-    json_object = json.dumps(medias, default=set_default, indent=4)
-    with open('media_data.json', 'w') as fil:
-        fil.write(json_object)
-    print("\nData Written to JSON File...\n")
+    user_id = cl.user_id_from_username("")
+    medias = cl.user_medias(user_id, 10)
+    #print(medias)
+    #print("Saving to JSON")
+    #json_object = json.dumps(medias, default=set_default, indent=4)
+    #with open('media_data.json', 'w') as fil:
+    #    fil.write(json_object)
     
-    #for media in medias:
-    #    print(media)
+    i = 0
+    media_list = []
+    for media in medias:
+        #i = i+1
+        media_dict = media.dict()
+        media_list.append(media_dict)
+    
+    media_list = sorted(media_list, key=lambda media: media['taken_at'], reverse=True)
+    
+    for media in media_list:
+        print(media['taken_at'], "\n")
+        
+    print("Testing Direct Message")
+    
+    cl.direct_send("", user_ids=[cl.user_id_from_username("laurenkeena")])
+    cl.direct_media_share(media_list[0]['pk'], user_ids=[cl.user_id_from_username("")])
+
+    
+    
+        #print(media_dict['taken_at'], "\n")
+        #fil_name = "video_"+str(i)+".json"
+        #with open(fil_name, "w") as outfile: 
+        #    json.dump(media_dict, outfile)
+        #print("Data Written to JSON File -",fil_name,"\n")
+
+        #print(media.dict())
+        #print(media.username)
+        #print(media.taken_at)
+        #print(media.video_url)
+        #print("\n")
+
+
 
 
 # Helper
