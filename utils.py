@@ -1,8 +1,9 @@
 """
 Author: Henry Keena
 License: MIT
-Date: 11/22/23
-Version: 0.1
+Date: 
+Version: 
+Description: File for Bot Logic and Utility Functions
 """
 
 # Imports Ensta Library
@@ -11,27 +12,52 @@ Version: 0.1
 # Imports instagrapi Library
 from instagrapi import Client
 
-
+# Other Imports
 import json
-
 import datetime
 
 
 
-"""
-"""
-
-
-
 
 """
+sends persona message
 """
-def test_ensta():
-    print("Testing Ensta Library...\n")
+def message_persona():
+    pass
+
+
+"""
+sends po
+"""
+def message_post():
+    pass
+
+
+"""
+reads recipient json file to make class object
+"""
+def read_recipient():
+    pass
 
 
 
-# cl.direct_send('How are you?', user_ids=[cl.user_id])  # send youself
+"""
+creates new recipient
+"""
+def create_recipient():
+    pass
+
+
+"""
+gets most recent post from account
+"""
+def get_most_recent_post():
+    pass
+
+
+
+
+# cl.direct_send('How are you?', user_ids=[cl.user_id]) 
 # cl.direct_media_share(media.pk, user_ids=[cl.user_id])
 
 """
@@ -64,7 +90,10 @@ def test_instagrapi():
         
     print("Testing Direct Message")
     
-    cl.direct_send("", user_ids=[cl.user_id_from_username("laurenkeena")])
+    # Direct Message Call
+    cl.direct_send("", user_ids=[cl.user_id_from_username("")])
+    
+    # Direct Video Message
     cl.direct_media_share(media_list[0]['pk'], user_ids=[cl.user_id_from_username("")])
 
     
@@ -84,23 +113,22 @@ def test_instagrapi():
 
 
 
-# Helper
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Helper Function
 def set_default(obj):
     if isinstance(obj, set):
         return list(obj)
     raise TypeError
-
-
-"""
-"""
-def main():
-    print("INSTAGRAM VIDEO BOT")
-    print("Calling Main...\n")
-    #test_ensta()
-    test_instagrapi()
-    
-
-
-# Calls Main
-if __name__ == "__main__":
-    main()
