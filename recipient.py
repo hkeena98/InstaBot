@@ -9,6 +9,13 @@ Description: Class file for Bot Reciepients
 """
 """
 class Recipient():
-    username = ""
-    set_persona = ""
+    __slots__ = ["username", "set_persona", "sources"]
+    
+    """
+    """
+    def __init__(self):
+        self.username = ""
+        self.set_persona = ""
+        self.sources = ""
+    
     

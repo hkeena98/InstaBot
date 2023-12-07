@@ -6,11 +6,11 @@ Version: 0.1
 Description: Main File for Instagram Bot
 """
 
-# Imports Configuration File
-from .config import *
+# Imports Bot File
+from bot import *
 
 # Imports Utility File
-from .recipient import *
+from recipient import *
 
 # Imports Utility Functions
 from utils import *
@@ -19,10 +19,12 @@ from utils import *
 """
 """
 def main():
-    print("INSTAGRAM VIDEO BOT")
-    print("Calling Main...\n")
-    #test_ensta()
-    #test_instagrapi()
+    print("INSTAGRAM BOT")
+    insta_bot = Bot()
+    #recent1 = get_most_recent_post(insta_bot, "")
+    #insta_bot.message_persona("")
+    #insta_bot.message_post("", recent1)
+
     
 
 

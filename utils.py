@@ -6,6 +6,12 @@ Version:
 Description: File for Bot Logic and Utility Functions
 """
 
+# Imports Configuration File
+from bot import *
+
+# Imports Utility File
+from recipient import *
+
 # Imports Ensta Library
 #from ensta import Host
 
@@ -19,18 +25,6 @@ import datetime
 
 
 
-"""
-sends persona message
-"""
-def message_persona():
-    pass
-
-
-"""
-sends po
-"""
-def message_post():
-    pass
 
 
 """
@@ -41,27 +35,29 @@ def read_recipient():
 
 
 
-"""
-creates new recipient
-"""
-def create_recipient():
-    pass
 
 
 """
 gets most recent post from account
 """
-def get_most_recent_post():
-    pass
+def get_most_recent_post(bot, account_name):
+    user_id = bot.BOT_CLIENT.user_id_from_username(account_name)
+    medias = bot.BOT_CLIENT.user_medias(user_id, 10)
+    media_list = []
+    for media in medias:
+        media_dict = media.dict()
+        media_list.append(media_dict)
+    media_list = sorted(media_list, key=lambda media: media['taken_at'], reverse=True)
+    return media_list[0]
 
 
 
-
+"""
 # cl.direct_send('How are you?', user_ids=[cl.user_id]) 
 # cl.direct_media_share(media.pk, user_ids=[cl.user_id])
 
-"""
-"""
+
+
 def test_instagrapi():
     print("Testing instagrapi Library...\n")
     cl = Client()
@@ -109,22 +105,7 @@ def test_instagrapi():
         #print(media.taken_at)
         #print(media.video_url)
         #print("\n")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+"""
 
 
 # Helper Function
