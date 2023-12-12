@@ -17,10 +17,17 @@ from utils import *
 
 
 """
+Function: 
+Description:
 """
 def main():
     print("INSTAGRAM BOT")
-    insta_bot = Bot()
+    #insta_bot = Bot()
+    recipients = fetch_recipients_json()
+    print(recipients)
+    for recipient in recipients:
+        print("\n")
+        recipient.print_recipient()
     #recent1 = get_most_recent_post(insta_bot, "")
     #insta_bot.message_persona("")
     #insta_bot.message_post("", recent1)
