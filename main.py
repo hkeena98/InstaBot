@@ -52,8 +52,11 @@ def main():
             if val != most_recent:
                 # If not most recent, set most recent to recipient
                 recipient.SOURCES[key] = most_recent
-            # Sends Most recent Post from Source
-            insta_bot.message_post(recipient.RECIPIENT_USERNAME, most_recent)
+                # Sends Most recent Post from Source
+                insta_bot.message_post(recipient.RECIPIENT_USERNAME, most_recent)
+            else:
+                # If last sent post is most recent, does not send post
+                continue
         # Updates recipient JSON file    
         recipient.write_recipient_json()
             
