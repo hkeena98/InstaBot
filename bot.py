@@ -10,7 +10,7 @@ Description: File for Bot Class & Configuration
 from instagrapi import Client
 
 import random
-
+from pathlib import Path
 
 """
 Class: Config()
@@ -43,9 +43,12 @@ class Bot():
     """
     def message_persona(self, recipient):
         try:
-            with open(self.BOT_PERSONA) as persona:
-                message = random.choice(persona.readlines()).strip()
-            self.BOT_CLIENT.direct_send(message, user_ids=[self.BOT_CLIENT.user_id_from_username(recipient)])
+            if Path(self.BOT_PERSONA).is_file():
+                with open(self.BOT_PERSONA) as persona:
+                    message = random.choice(persona.readlines()).strip()
+                self.BOT_CLIENT.direct_send(message, user_ids=[self.BOT_CLIENT.user_id_from_username(recipient)])
+            else:
+                print("\nNO PERSONA FILE SET...\n")
         except Exception as error:
             print("\nBOT PERSONA MESSAGE ERROR:", error)
 
@@ -55,7 +58,7 @@ class Bot():
     """
     def message_post(self, recipient, media):
         try:
-            self.BOT_CLIENT.direct_media_share(media['pk'], user_ids=[self.BOT_CLIENT.user_id_from_username(recipient)])
+            self.BOT_CLIENT.direct_media_share(media, user_ids=[self.BOT_CLIENT.user_id_from_username(recipient)])
         except Exception as error:
             print("\nBOT POST SHARE ERROR:", error)
     

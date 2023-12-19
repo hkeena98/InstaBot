@@ -55,7 +55,7 @@ def get_most_recent_post(bot, account_name):
         media_dict = media.dict()
         media_list.append(media_dict)
     media_list = sorted(media_list, key=lambda media: media['taken_at'], reverse=True)
-    return media_list[0]
+    return media_list[0]['pk']
 
 """
 Function: 
@@ -64,3 +64,14 @@ Description:
 def wait_time(period):
     print("BOT WAITING PERIOD:"+period)
     time.sleep(period)
+    
+
+    
+"""
+Function: 
+Description:
+"""
+def persona_check(recipient):
+    if recipient.PERSONA_ENABLED == True:
+        pass
+    

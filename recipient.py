@@ -6,11 +6,11 @@ Version:
 Description: Class file for Bot Reciepients
 """
 
+import json
+
 """
 """
-class Recipient():
-    __slots__ = ["RECIPIENT_USERNAME", "PERSONA_ENABLED", "SOURCES"]
-    
+class Recipient():  
     """
     Function: 
     Description:
@@ -30,9 +30,12 @@ class Recipient():
         print("IS PERSONA ENABLED:", self.PERSONA_ENABLED)
         print("RECIPIENT SOURCES:", self.SOURCES)
     
+    
     """
     Function: 
     Description:
     """
-    def create_recipient_json(self):
-        pass
+    def write_recipient_json(self):
+        file_name = "bots/"+self.RECIPIENT_USERNAME+".json"
+        with open(file_name, 'w', encoding='utf-8') as file:
+            json.dump(self.__dict__, file, ensure_ascii=True, indent=4)
