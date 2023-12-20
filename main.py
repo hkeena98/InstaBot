@@ -22,10 +22,7 @@ import sys
 Function: 
 Description:
 """
-def main():
-    # Start of operations
-    print("INSTAGRAM BOT")
-    
+def operations():
     # Checks if Recipient Bot folders exist
     if not any(fname.endswith('.json') for fname in os.listdir('bots/')):
         print("\nNo Recipient Files Detected...\n")
@@ -59,29 +56,36 @@ def main():
                 continue
         # Updates recipient JSON file    
         recipient.write_recipient_json()
-            
-    
-    
-            
-    
-            
-    
-
+        
     # Prints Recipient Data
     for recipient in recipients:
         print("\n")
-        recipient.print_recipient()            
-
-        
-    #recent1 = get_most_recent_post(insta_bot, "")
-    #insta_bot.message_persona("")
-    #insta_bot.message_post("", recent1)
-
-
-    
-
-
-
+        recipient.print_recipient()  
+            
+"""
+Function: 
+Description:
+"""
+def main():
+    # Start of operations
+    print("INSTAGRAM BOT...\n")
+    # Input for Main Options
+    option = input("Single Use or Timed? (S/T): ")
+    # Main Options Divergent Conditional
+    if option == 'S' or option == 's':
+        operations()
+        sys.exit()
+    elif option == 'T' or option == 't':
+        operation_period = int(input("Enter Bot Operational Run Period(Minutes): "))
+        while True:
+            if operation_period < 0:
+                exit()
+            else:
+                wait_time(operation_period)
+                operations()
+    else:
+        print("\nINVAID OPTION\n")
+        sys.exit()
 
 # Calls Main
 if __name__ == "__main__":

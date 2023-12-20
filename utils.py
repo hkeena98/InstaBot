@@ -62,16 +62,5 @@ Function:
 Description:
 """
 def wait_time(period):
-    print("BOT WAITING PERIOD:"+period)
+    print("\nBOT WAITING PERIOD:", period, "Minutes...\n")
     time.sleep(period)
-    
-
-    
-"""
-Function: 
-Description:
-"""
-def persona_check(recipient):
-    if recipient.PERSONA_ENABLED == True:
-        pass
-    
