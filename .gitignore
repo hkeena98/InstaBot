@@ -161,4 +161,3 @@ cython_debug/
 
 # User Data & User Created Files
 *.txt
-*.json

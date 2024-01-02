@@ -1,0 +1,8 @@
+{
+    "BOT_USERNAME": "",
+    "BOT_PASSWORD": "",
+    "PERSONA_TYPE": "",
+    "ENABLE_PERSONA": false,
+    "PERSONA_FILE": "",
+    "OPENAI_API_KEY": ""
+}

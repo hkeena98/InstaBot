@@ -39,7 +39,7 @@ def operations():
     for recipient in recipients:
         # Checks if Persona is enabled, if true sends Persona Message
         if recipient.PERSONA_ENABLED == True:
-            insta_bot.message_persona(recipient.RECIPIENT_USERNAME)
+            insta_bot.message_file_persona(recipient.RECIPIENT_USERNAME)
             
         # Iterates through recipient Sources
         for key, val in recipient.SOURCES.items():
