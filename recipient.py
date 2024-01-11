@@ -20,7 +20,6 @@ class Recipient():
         self.PERSONA_ENABLED = persona_enabled
         self.SOURCES = sources
 
-
     """
     Function: 
     Description:
@@ -29,7 +28,6 @@ class Recipient():
         print("RECIPIENT USERNAME:", self.RECIPIENT_USERNAME)
         print("IS PERSONA ENABLED:", self.PERSONA_ENABLED)
         print("RECIPIENT SOURCES:", self.SOURCES)
-    
     
     """
     Function: 

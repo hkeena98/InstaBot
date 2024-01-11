@@ -14,4 +14,13 @@ Regardless, install all dependencies using `pip3 install -r requirements.txt`.
 
 
 
+
+`{
+    "RECIPIENT_USERNAME": "example_username",
+    "PERSONA_ENABLED": true,
+    "SOURCES": {
+        "example_account": ""
+    }
+}`
+
 ## Usage

@@ -34,7 +34,7 @@ def operations():
     # Fetches Recipient data from JSON files
     recipients = fetch_recipients_json()
     print(recipients)
-  
+
     # Begins iteration of Recipient setup operations
     for recipient in recipients:
         # Checks if Persona is enabled, if true sends Persona Message
@@ -69,6 +69,16 @@ Description:
 def main():
     # Start of operations
     print("INSTAGRAM BOT...\n")
+    
+    insta_bot = Bot()
+    
+    insta_bot.print_bot()
+    
+    
+    
+    
+    
+    """
     # Input for Main Options
     option = input("Single Use or Timed? (S/T): ")
     # Main Options Divergent Conditional
@@ -86,6 +96,7 @@ def main():
     else:
         print("\nINVAID OPTION\n")
         sys.exit()
+    """
 
 # Calls Main
 if __name__ == "__main__":
