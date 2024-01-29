@@ -15,9 +15,10 @@ class Recipient():
     Function: 
     Description:
     """
-    def __init__(self, recipient_username, persona_enabled, sources):
+    def __init__(self, recipient_username, persona_enabled, post_timer, sources):
         self.RECIPIENT_USERNAME = recipient_username
         self.PERSONA_ENABLED = persona_enabled
+        self.POST_TIMER = post_timer
         self.SOURCES = sources
 
     """
@@ -27,6 +28,7 @@ class Recipient():
     def print_recipient(self):
         print("RECIPIENT USERNAME:", self.RECIPIENT_USERNAME)
         print("IS PERSONA ENABLED:", self.PERSONA_ENABLED)
+        print("POST TIMER(IN HOURS):", self.POST_TIMER)
         print("RECIPIENT SOURCES:", self.SOURCES)
     
     """

@@ -3,14 +3,15 @@ Author: Henry Keena
 License: MIT
 Date: 
 Version: 
-Description: File for Bot Class & Configuration
+Description: File for Bot Class Object
 """
 
 # Imports instagrapi Library
 from instagrapi import Client
-
-import random
 from pathlib import Path
+from openai import OpenAI
+import requests
+import random
 import json
 
 """
@@ -18,7 +19,7 @@ Class: Bot()
 Description: Object Class for Instagram Bot
 """
 class Bot():
-    __slots__ = ["CONFIG_FILE", "BOT_USERNAME", "BOT_PASSWORD", "PERSONA_TYPE", "ENABLE_PERSONA", "PERSONA_FILE", "OPENAI_API_KEY", "BOT_CLIENT"]
+    __slots__ = ["CONFIG_FILE", "BOT_USERNAME", "BOT_PASSWORD", "ENABLE_PERSONA", "PERSONA_TYPE", "PERSONA_FILE", "OPENAI_API_KEY", "GPT_PERSONA", "BOT_CLIENT", "OPENAI_CLIENT"]
     """
     Function: __init__(self)
     Description: Initialization Function for Object Instance of InstBot
@@ -31,17 +32,21 @@ class Bot():
                 config_data = json.load(config_file)
                 self.BOT_USERNAME = config_data["BOT_USERNAME"]
                 self.BOT_PASSWORD = config_data["BOT_PASSWORD"]
-                self.PERSONA_TYPE = config_data["PERSONA_TYPE"]
                 self.ENABLE_PERSONA = config_data["ENABLE_PERSONA"]
+                self.PERSONA_TYPE = config_data["PERSONA_TYPE"]
                 self.PERSONA_FILE = config_data["PERSONA_FILE"]
                 self.OPENAI_API_KEY = config_data["OPENAI_API_KEY"]
+                self.GPT_PERSONA = config_data["GPT_PERSONA"]
             self.BOT_CLIENT = Client()
+            if self.OPENAI_API_KEY is None or self.OPENAI_API_KEY == "":
+                self.OPENAI_CLIENT = None
+            else:
+                self.OPENAI_CLIENT = OpenAI(api_key=self.OPENAI_API_KEY)
             self.BOT_CLIENT.login(self.BOT_USERNAME, self.BOT_PASSWORD)
             print("\nBot Instance Created...\n")
         except Exception as error:
             print("\nBOT CONSTRUCTOR INSTANTIATION ERROR:", error)
             
-
     """
     Function: 
     Description: 
@@ -61,26 +66,17 @@ class Bot():
     Function: 
     Description: 
     """
-    def message_gpt_persona(self, recipient):
-        pass
-        """
-        import requests
-        import openai
-
-        def get_chatgpt_response(user_message):
-            openai.api_key = "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"
-
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",  # Specify the GPT-3.5 Turbo model
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant."},
-                    {"role": "user", "content": user_message},
-                ],
-                max_tokens=150,
-            )
-
-            return response["choices"][0]["message"]["content"].strip()
-        """
+    def message_gpt_persona(self, message):  
+        chat_completion = self.OPENAI_CLIENT.chat.completions.create(
+            messages=[
+                {
+                    "role": self.GPT_PERSONA,
+                    "content": message
+                }
+            ],
+            model="gpt-3.5-turbo",
+        )
+        return chat_completion
 
     """
     Function: 
@@ -92,20 +88,18 @@ class Bot():
         except Exception as error:
             print("\nBOT POST SHARE ERROR:", error)
     
-    
-    
     """
     Function: 
     Description:
     """
     def print_bot(self):
         print("\n")
-        print(self.CONFIG_FILE)
-        print(self.BOT_USERNAME)
-        print(self.BOT_PASSWORD)
-        print(self.PERSONA_TYPE)
-        print(self.ENABLE_PERSONA)
-        print(self.PERSONA_FILE)
-        print(self.OPENAI_API_KEY)
-        print(self.BOT_CLIENT)
+        print("CONFIG_FILE:", self.CONFIG_FILE)
+        print("BOT_USERNAME:", self.BOT_USERNAME)
+        print("BOT_PASSWORD:", self.BOT_PASSWORD)
+        print("ENABLE_PERSONA:", self.ENABLE_PERSONA)
+        print("PERSONA_TYPE:", self.PERSONA_TYPE)
+        print("PERSONA_FILE:", self.PERSONA_FILE)
+        print("OPENAI_API_KEY:", self.OPENAI_API_KEY)
+        print("BOT_CLIENT:", self.BOT_CLIENT)
         print("\n")

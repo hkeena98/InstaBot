@@ -1,8 +1,9 @@
 {
     "BOT_USERNAME": "keen_bot",
     "BOT_PASSWORD": "Key3_BOt-[1990];",
-    "PERSONA_TYPE": "FILE",
     "ENABLE_PERSONA": true,
+    "PERSONA_TYPE": "FILE",
     "PERSONA_FILE": "persona.txt",
-    "OPENAI_API_KEY": "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"
+    "OPENAI_API_KEY": "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",
+    "GPT_PERSONA": "You are a cheerful robot that wants to help me."
 }

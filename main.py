@@ -22,7 +22,7 @@ import sys
 Function: 
 Description:
 """
-def operations():
+def base_operations():
     # Checks if Recipient Bot folders exist
     if not any(fname.endswith('.json') for fname in os.listdir('bots/')):
         print("\nNo Recipient Files Detected...\n")
@@ -62,6 +62,8 @@ def operations():
         print("\n")
         recipient.print_recipient()  
             
+
+            
 """
 Function: 
 Description:
@@ -74,8 +76,7 @@ def main():
     
     insta_bot.print_bot()
     
-    
-    
+    insta_bot.message_gpt_persona("Testing GPT Response")
     
     
     """
@@ -83,7 +84,7 @@ def main():
     option = input("Single Use or Timed? (S/T): ")
     # Main Options Divergent Conditional
     if option == 'S' or option == 's':
-        operations()
+        base_operations()
         sys.exit()
     elif option == 'T' or option == 't':
         operation_period = int(input("Enter Bot Operational Run Period(Minutes): "))
@@ -92,7 +93,7 @@ def main():
                 exit()
             else:
                 wait_time(operation_period)
-                operations()
+                base_operations()
     else:
         print("\nINVAID OPTION\n")
         sys.exit()

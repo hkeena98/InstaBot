@@ -1,6 +1,7 @@
 {
     "RECIPIENT_USERNAME": "henrykeena98",
     "PERSONA_ENABLED": true,
+    "POST_TIMER": 24,
     "SOURCES": {
         "austinnasso": "3260147781090896693",
         "in_otternews": "3260547411398368942",
