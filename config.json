@@ -2,8 +2,8 @@
     "BOT_USERNAME": "instagram_username",
     "BOT_PASSWORD": "instagram_password",
     "ENABLE_PERSONA": true,
-    "PERSONA_TYPE": "GPT",
-    "PERSONA_FILE": "example_persona.txt",
+    "PERSONA_TYPE": "FILE",
+    "PERSONA_FILE": "persona.txt",
     "OPENAI_API_KEY": "example_key12345",
     "GPT_PERSONA": "You are a helpful and friendly robot."
 }
