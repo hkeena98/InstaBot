@@ -1,9 +1,9 @@
 {
-    "BOT_USERNAME": "keen_bot",
-    "BOT_PASSWORD": "Key3_BOt-[1990];",
+    "BOT_USERNAME": "instagram_username",
+    "BOT_PASSWORD": "instagram_password",
     "ENABLE_PERSONA": true,
-    "PERSONA_TYPE": "FILE",
-    "PERSONA_FILE": "persona.txt",
-    "OPENAI_API_KEY": "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",
-    "GPT_PERSONA": "You are a cheerful robot that wants to help me."
+    "PERSONA_TYPE": "GPT",
+    "PERSONA_FILE": "example_persona.txt",
+    "OPENAI_API_KEY": "example_key12345",
+    "GPT_PERSONA": "You are a helpful and friendly robot."
 }

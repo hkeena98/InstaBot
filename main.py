@@ -76,7 +76,7 @@ def main():
     
     insta_bot.print_bot()
     
-    insta_bot.message_gpt_persona("Testing GPT Response")
+    #insta_bot.message_gpt_persona("Testing GPT Response")
     
     
     """

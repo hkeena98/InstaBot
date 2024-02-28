@@ -16,7 +16,7 @@ InstaBot works by sending messages through an existing Instagram account. You wi
 
 This project is fully open source, and written under the MIT license. Anyone is free to use and extend it as they see fit. Enjoy.
 
-That being said, the creator of this project does not encourage or endorse its use and abuse for online harrassment or any action that could be construed as such. Just be nice.
+That being said, the creator of this project does not encourage or endorse its use and abuse for online harrassment or any action that could be construed as such. Just play nice with others. You're on your honor.
 
 ## Dependencies/Libraries, Installation, & Operation
 
@@ -27,10 +27,11 @@ Most of the bot is just pure Python 3 code, but there is two notably utilized ex
 Operating InstaBot is pretty simple:
 1. [Create an Instagram account.](https://www.instagram.com/accounts/emailsignup/) 
 2. Create a virtual environment: `python3 -m venv .venv`
-3. Install necessary dependencies: `pip3 install -r requirements.txt`
-4. Create a new subdirectory for the recipient configurations: `mkdir bots`
-5. Configure the bot and recipient settings in the necessary configuration files, as explained in the following section of this README.
-6. Run the actual bot via the main: `python3 main.py`
+3. Activate virtual environment: `source venv/bin/activate`
+4. Install necessary dependencies: `pip3 install -r requirements.txt`
+5. Create a new subdirectory for the recipient configurations: `mkdir bots`
+6. Configure the bot and recipient settings in the necessary configuration files, as explained in the following section of this README.
+7. Run the actual bot via the main: `python3 main.py`
 
 ## Settings & Configurations
 
@@ -62,7 +63,7 @@ Example `config.json` File structure:
     "PERSONA_TYPE": "GPT",
     "PERSONA_FILE": "example_persona.txt",
     "OPENAI_API_KEY": "example_key12345",
-    "GPT_PERSONA: "You are a helpful and friendly robot."
+    "GPT_PERSONA": "You are a helpful and friendly robot."
 }
 ```
 
