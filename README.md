@@ -48,11 +48,12 @@ There are three main types of configuration files that InstaBot uses, two use JS
 
 - `BOT_USERNAME` - String value of the username of the Instagram account that the Bot will be operating under.
 - `BOT_PASSWORD` - String value of the password of the Bot's account.
-- `ENABLE_PERSONA` - A boolean value determining whether or not the Bot will have a 'persona' or not. Optional, default is `false`.
+- `ENABLE_PERSONA` - A boolean value determining whether or not the Bot will have a 'persona' or not. Optional, default is `true`.
 - `PERSONA_TYPE` - String value for whether the Bot's persona is being generated from a custom file, or through OpenAI's GPT-3.5 language model. Value should be either: `FILE` or `GPT`.
 - `PERSONA_FILE` - String value of text file name for the Bot's persona, assuming you set the persona type to `FILE`. You can also leave this blank if you desire.
 - `OPENAI_API_KEY` - String value of your OpenAI API Key. Necessary if you want the Bot's persona to use the GPT language model. **NOTE: This will require OpenAI credits**
 - `GPT_PERSONA` - String value of what you want the Bot's persona or personality to be like, assuming you have the persona type set to `GPT`. You can also leave this blank if you desire.
+- `BOT_TIMER` - Numeric(whole/decimal) value of how often the Bot will send posts to recipients. It operates by minutes, so for example if you put `30`, as the value the bot will send new posts every half an hour.
 
 Example `config.json` File structure:
 ```
@@ -60,10 +61,11 @@ Example `config.json` File structure:
     "BOT_USERNAME": "instagram_username",
     "BOT_PASSWORD": "instagram_password",
     "ENABLE_PERSONA": true,
-    "PERSONA_TYPE": "GPT",
+    "PERSONA_TYPE": "FILE",
     "PERSONA_FILE": "example_persona.txt",
     "OPENAI_API_KEY": "example_key12345",
     "GPT_PERSONA": "You are a helpful and friendly robot."
+    "BOT_TIMER": 30
 }
 ```
 
@@ -73,7 +75,6 @@ These configuration files are for applying specific settings to specific intende
 
 - `RECIPIENT_USERNAME` - String value of a recipient account. This is the account you want InstaBot to send posts to.
 - `PERSONA_ENABLED` - Boolean value that determines whether this specific recipient will have the bot's persona feature enabled. If the persona is not enabled in the bot's global config file, it will not send persona messages regardless of this value.
-- `POST_TIMER` - Integer value of how often the Bot will send post's to this account. It operates by hours, so for example if you put `24`, as the value the bot will send new posts every once a day.
 - `SOURCES` - Dictionary value for storing what account sources you want the bot to pull new posts from. Each entry in the dictionary should be a simple key value pair of the desired post account, and an empty String value. For example: `"example_recipient1": ""`. You can add as many accounts as you want to the sources dictionary. An important note is when adding a new source account to this file, leave the value of the key empty, the bot will automatically fill the value when it reads the new source for the first time.
 
 Example `bots/example_recipient_instagram_username.json` file structure:
@@ -81,9 +82,8 @@ Example `bots/example_recipient_instagram_username.json` file structure:
 {
     "RECIPIENT_USERNAME": "example_recipient_instagram_username",
     "PERSONA_ENABLED": true,
-    "POST_TIMER": 24,
     "SOURCES": {
-        "example_recipient1": "",
+        "example_source_account_name": "",
         ... ,
         ... ,
         ...

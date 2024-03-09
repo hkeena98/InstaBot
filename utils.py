@@ -1,32 +1,21 @@
 """
 Author: Henry Keena
 License: MIT
-Date: 
-Version: 
+Date: 3/9/2024
+Version: 1.0
 Description: File for Bot Logic and Utility Functions
 """
 
-# Imports Configuration File
+# Import Declarations
 from bot import *
-
-# Imports Utility File
 from recipient import *
-
-# Imports Ensta Library
-#from ensta import Host
-
-# Imports instagrapi Library
 from instagrapi import Client
-
-# Other Imports
 import json
-import datetime
 import os
-import time
 
 """
-Function: 
-Description:
+Function: fetch_recipients_json()
+Description: Function for fetching recipient accounts from JSON file
 """
 def fetch_recipients_json():
     file_list = []
@@ -44,8 +33,8 @@ def fetch_recipients_json():
     return recipient_list
 
 """
-Function: 
-Description:
+Function: get_most_recent_post(bot, account_name)
+Description: Function for fetching most recent post from an account
 """
 def get_most_recent_post(bot, account_name):
     user_id = bot.BOT_CLIENT.user_id_from_username(account_name)
@@ -56,11 +45,3 @@ def get_most_recent_post(bot, account_name):
         media_list.append(media_dict)
     media_list = sorted(media_list, key=lambda media: media['taken_at'], reverse=True)
     return media_list[0]['pk']
-
-"""
-Function: 
-Description:
-"""
-def wait_time(period):
-    print("\nBOT WAITING PERIOD:", period, "Minutes...\n")
-    time.sleep(period)
